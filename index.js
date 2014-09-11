@@ -63,9 +63,9 @@ async.parallel(setupTasks, function(err, results) {
   var rl = results.lineReader;
   rl.setPrompt(promptStream.join("\n"));
 
-  rl.prompt();
   rl.on('line', function(line) {
     var processedLine = line.trim().toLowerCase();
+    rl.prompt();
     switch(state) {
       case COMMANDS_LIST:
         handleCommandsListState(processedLine);
